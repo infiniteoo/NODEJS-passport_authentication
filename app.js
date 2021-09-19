@@ -34,7 +34,8 @@ app.use(
   })
 );
 
-
+// CONNECT FLASH
+app.use(flash());
 
 const PORT = process.env.PORT || 5000;
 
