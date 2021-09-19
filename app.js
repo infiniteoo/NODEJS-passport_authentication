@@ -4,6 +4,8 @@ require("dotenv").config();
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const mongoose = require("mongoose");
+const flash = require("connect-flash");
+const session = require("express-session");
 
 const app = express();
 
@@ -20,8 +22,19 @@ mongoose
 app.use(expressLayouts);
 app.set("view engine", "ejs");
 
-// INTEGRATE BODY PARSER
+// BODY PARSER
 app.use(express.urlencoded({ extended: false }));
+
+// EXPRESS SESSION
+app.use(
+  session({
+    secret: "secret",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+
+
 
 const PORT = process.env.PORT || 5000;
 
