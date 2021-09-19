@@ -1,9 +1,20 @@
-// initialize dotenv
+// INITIALIZE DOTENV
 require("dotenv").config();
 
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
+const mongoose = require("mongoose");
+
 const app = express();
+
+// DB CONFIG
+const db = require("./config/keys").mongoURI;
+
+// CONNECT TO MONGODB
+mongoose
+  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("mongoDB connected..."))
+  .catch((err) => console.log(err));
 
 // EJS
 app.use(expressLayouts);
