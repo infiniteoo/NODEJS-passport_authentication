@@ -37,6 +37,13 @@ app.use(
 // CONNECT FLASH
 app.use(flash());
 
+// GLOBAL VARS
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
+  next();
+});
+
 const PORT = process.env.PORT || 5000;
 
 // ROUTES
