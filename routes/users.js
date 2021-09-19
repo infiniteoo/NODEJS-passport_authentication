@@ -3,10 +3,10 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/login", (req, res) => {
-  res.send("Login!");
+  res.render("login");
 });
 router.get("/register", (req, res) => {
-  res.send("REGISTER!");
+  res.render("register");
 });
 
 module.exports = router;
