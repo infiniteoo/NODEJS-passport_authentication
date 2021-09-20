@@ -6,6 +6,10 @@ const expressLayouts = require("express-ejs-layouts");
 const mongoose = require("mongoose");
 const flash = require("connect-flash");
 const session = require("express-session");
+const passport = require("passport");
+
+// PASSPORT CONFIG
+require("./config/passport")(passport);
 
 const app = express();
 
@@ -33,6 +37,10 @@ app.use(
     saveUninitialized: true,
   })
 );
+
+// PASSPORT MIDDLEWARE
+app.use(passport.initialize());
+app.use(passport.session());
 
 // CONNECT FLASH
 app.use(flash());
